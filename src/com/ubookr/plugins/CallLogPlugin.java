@@ -51,14 +51,8 @@ public class CallLogPlugin extends CordovaPlugin {
         this.args = args;
         this.callbackContext = callbackContext;
 
-        if (cordova.hasPermission(READ_CALL_LOG)) {
-            Log.d(TAG, "Permission available");
-            executeHelper();
-        } else {
-            Log.d(TAG, "No permissions, will request");
-            cordova.requestPermission(this, READ_CALL_LOG_REQ_CODE,
-                    READ_CALL_LOG);
-        }
+        executeHelper();
+
         return true;
     }
 
@@ -242,7 +236,7 @@ public class CallLogPlugin extends CordovaPlugin {
             }
         });
     }
-    
+
     private JSONObject getCallLog(String limiter) throws JSONException {
 
         JSONObject callLog = new JSONObject();
