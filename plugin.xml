@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="com.ubookr.plugins.calllog"
-        version="2.0">
+        id="cordova-plugin-call-log"
+        version="0.0.1">
 
     <name>CallLog</name>
 
@@ -13,7 +13,7 @@
     <license>MIT</license>
 
     <engines>
-        <engine name="cordova" version=">=3.0.0"/>
+        <engine name="cordova" version=">=8.0.0"/>
     </engines>
 
     <js-module src="www/CallLog.js" name="CallLog">
@@ -33,10 +33,10 @@
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
-            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-            <uses-permission android:name="android.permission.READ_CALL_LOG" />
-            <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
-            <uses-permission android:name="android.permission.READ_CONTACTS" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+            <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
+            <uses-permission android:name="android.permission.READ_CONTACTS"/>
         </config-file>
 
         <source-file src="src/com/ubookr/plugins/CallLogPlugin.java" target-dir="src/com/ubookr/plugins"/>

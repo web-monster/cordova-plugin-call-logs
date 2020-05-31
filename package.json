@@ -1,0 +1,29 @@
+{
+    "name": "cordova-plugin-call-log",
+    "version": "0.0.1",
+    "description": "Cordova Android Call log Plugin",
+    "cordova": {
+        "id": "cordova-plugin-call-log",
+        "platforms": [
+            "android"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sagrawal31/cordova-plugin-calllog"
+    },
+    "bugs": {
+        "url": "https://github.com/sagrawal31/cordova-plugin-calllog/issues"
+    },
+    "keywords": [
+        "cordova",
+        "device",
+        "ecosystem:cordova",
+        "cordova-android",
+        "cordova-browser"
+    ],
+    "author": "Apache Software Foundation",
+    "license": "Apache-2.0",
+    "devDependencies": {
+    }
+}
