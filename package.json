@@ -1,5 +1,5 @@
 {
-    "name": "cordova-plugin-call-log",
+    "name": "cordova-plugin-call-log2",
     "version": "0.0.1",
     "description": "Cordova Android Call log Plugin",
     "scripts": {
@@ -7,7 +7,7 @@
         "postversion": "git push && git push --tags"
     },
     "cordova": {
-        "id": "cordova-plugin-call-log",
+        "id": "cordova-plugin-call-log2",
         "platforms": [
             "android"
         ]

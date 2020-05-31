@@ -1,4 +1,4 @@
-# cordova-plugin-call-log
+# cordova-plugin-call-log2
 
 Cordova plugin to access the call history on a device.
 
@@ -10,7 +10,7 @@ Cordova plugin to access the call history on a device.
 ## Installation
 
 ```shell script
-cordova plugins add cordova-plugin-calllog
+cordova plugins add cordova-plugin-call-log2
 ```
 
 ## Usage
@@ -19,7 +19,9 @@ cordova plugins add cordova-plugin-calllog
 
 ```javascript
 // days is how many days back to go
-window.plugins.calllog.list(days, function (response) {
+const days = 7;
+
+window.plugins.callLog.list(days, function (response) {
     console.log(response.rows);
 }, function (error) {
     console.error(error)
@@ -52,7 +54,7 @@ Where `type` is-
 ### Contact a phone number
 
 ```javascript
-window.plugins.calllog.contact("+919876543210", function (response) {
+window.plugins.callLog.contact("+919876543210", function (response) {
     console.log(response);
 }, function (error) {
     console.error(error)
@@ -62,7 +64,7 @@ window.plugins.calllog.contact("+919876543210", function (response) {
 ### Show a phone number
 
 ```javascript
-window.plugins.calllog.show("+919876543210", function (response) {
+window.plugins.callLog.show("+919876543210", function (response) {
     console.log(response);
 }, function (error) {
     console.error(error)
@@ -72,7 +74,7 @@ window.plugins.calllog.show("+919876543210", function (response) {
 ### Delete a call log
 
 ```javascript
-window.plugins.calllog.delete("+919876543210", function (response) {
+window.plugins.callLog.delete("+919876543210", function (response) {
     console.log(response);
 }, function (error) {
     console.error(error)
