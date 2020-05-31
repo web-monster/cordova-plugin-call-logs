@@ -2,6 +2,10 @@
     "name": "cordova-plugin-call-log",
     "version": "0.0.1",
     "description": "Cordova Android Call log Plugin",
+    "scripts": {
+        "version": "node ./bump-version.js && git add plugin.xml",
+        "postversion": "git push && git push --tags"
+    },
     "cordova": {
         "id": "cordova-plugin-call-log",
         "platforms": [
@@ -24,6 +28,5 @@
     ],
     "author": "Apache Software Foundation",
     "license": "Apache-2.0",
-    "devDependencies": {
-    }
+    "devDependencies": {}
 }
