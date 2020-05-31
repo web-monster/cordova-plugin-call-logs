@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/cordova-plugin-call-log2.svg)](https://badge.fury.io/js/cordova-plugin-call-log2)
+
 # cordova-plugin-call-log2
 
 Cordova plugin to access the call history on a device.
