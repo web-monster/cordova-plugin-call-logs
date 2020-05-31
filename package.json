@@ -1,6 +1,6 @@
 {
     "name": "cordova-plugin-call-log2",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Cordova Android Call log Plugin",
     "scripts": {
         "version": "node ./bump-version.js && git add plugin.xml",
