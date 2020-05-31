@@ -10,14 +10,14 @@ exports.defineAutoTests = function() {
   };
 
   describe('Plugin availability', function () {
-    it("window.plugins.calllog should exist", function() {
-      expect(window.plugins.calllog).toBeDefined();
+    it("corodva.plugins.callLog should exist", function() {
+      expect(corodva.plugins.callLog).toBeDefined();
     });
   });
 
   describe('API functions', function () {
     it("should define get", function() {
-      expect(window.plugins.calllog.get).toBeDefined();
+      expect(corodva.plugins.callLog.get).toBeDefined();
     });
   });
 };

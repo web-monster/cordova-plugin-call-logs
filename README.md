@@ -23,7 +23,7 @@ cordova plugins add cordova-plugin-call-log2
 // days is how many days back to go
 const days = 7;
 
-window.plugins.callLog.list(days, function (response) {
+cordova.plugins.callLog.list(days, function (response) {
     console.log(response.rows);
 }, function (error) {
     console.error(error)
@@ -56,7 +56,7 @@ Where `type` is-
 ### Contact a phone number
 
 ```javascript
-window.plugins.callLog.contact("+919876543210", function (response) {
+cordova.plugins.callLog.contact("+919876543210", function (response) {
     console.log(response);
 }, function (error) {
     console.error(error)
@@ -66,7 +66,7 @@ window.plugins.callLog.contact("+919876543210", function (response) {
 ### Show a phone number
 
 ```javascript
-window.plugins.callLog.show("+919876543210", function (response) {
+cordova.plugins.callLog.show("+919876543210", function (response) {
     console.log(response);
 }, function (error) {
     console.error(error)
@@ -76,7 +76,7 @@ window.plugins.callLog.show("+919876543210", function (response) {
 ### Delete a call log
 
 ```javascript
-window.plugins.callLog.delete("+919876543210", function (response) {
+cordova.plugins.callLog.delete("+919876543210", function (response) {
     console.log(response);
 }, function (error) {
     console.error(error)
