@@ -8,7 +8,6 @@ import android.provider.ContactsContract.Intents;
 import android.provider.ContactsContract.PhoneLookup;
 import android.util.Log;
 import android.content.pm.PackageManager;
-import static android.Manifest.permission.READ_CALL_LOG;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -31,28 +30,31 @@ public class CallLogPlugin extends CordovaPlugin {
     private static final String TAG = "CallLogPlugin";
     // Permission request stuff.
     private static final int READ_CALL_LOG_REQ_CODE = 0;
-    private static final String PERMISSION_DENIED_ERROR =
-        "User refused to give permissions for reading call log";
+    private static final String PERMISSION_DENIED_ERROR = "User refused to give permissions for reading call log";
     // Exec arguments.
     private CallbackContext callbackContext;
     private JSONArray args;
     private String action;
 
-    public static final String READ_CALL_LOG =
-        android.Manifest.permission.READ_CALL_LOG;
-
-    @Override
-    public boolean execute(String action, JSONArray args,
-            final CallbackContext callbackContext) {
-
-        Log.d(TAG, "execute called");
+    /**
+     * Executes the request and returns PluginResult.
+     *
+     * @param action            The action to execute.
+     * @param args              JSONArray of arguments for the plugin.
+     * @param callbackContext   The callback context used when calling back into JavaScript.
+     * @return                  True if the action was valid, false otherwise.
+     */
+    public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
 
         this.action = action;
         this.args = args;
         this.callbackContext = callbackContext;
 
-        executeHelper();
-
+        if (cordova.hasPermission(android.Manifest.permission.READ_CALL_LOG)) {
+            executeHelper();
+        } else {
+            cordova.requestPermission(this, READ_CALL_LOG_REQ_CODE, android.Manifest.permission.READ_CALL_LOG);
+        }
         return true;
     }
 
@@ -70,25 +72,20 @@ public class CallLogPlugin extends CordovaPlugin {
             insert();
         } else {
             Log.d(TAG, "Invalid action: " + action + " passed");
-            callbackContext.sendPluginResult(
-                    new PluginResult(Status.INVALID_ACTION));
+            callbackContext.sendPluginResult(new PluginResult(Status.INVALID_ACTION));
         }
     }
 
-    public void onRequestPermissionResult(
-            int requestCode, String[] permissions,
-            int[] grantResults) throws JSONException {
+    public void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResults) throws JSONException {
         for (int r : grantResults) {
             if (r == PackageManager.PERMISSION_DENIED) {
                 Log.d(TAG, "Permission denied");
-                callbackContext.sendPluginResult(
-                        new PluginResult(PluginResult.Status.ERROR,
-                            PERMISSION_DENIED_ERROR));
+                callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR, PERMISSION_DENIED_ERROR));
                 return;
             }
         }
         executeHelper();
-            }
+    }
 
     private void show() {
         //        cordova.getThreadPool().execute(new Runnable() {
@@ -168,7 +165,6 @@ public class CallLogPlugin extends CordovaPlugin {
     }
 
     private void viewContact(String phoneNumber) {
-
         Intent i = new Intent(Intents.SHOW_OR_CREATE_CONTACT,
                 Uri.parse(String.format("tel: %s", phoneNumber)));
         cordova.getActivity().startActivity(i);
@@ -179,7 +175,6 @@ public class CallLogPlugin extends CordovaPlugin {
             public void run() {
                 PluginResult result;
                 try {
-
                     int res = CallLogPlugin.this.cordova.getActivity().getContentResolver().delete(
                         android.provider.CallLog.Calls.CONTENT_URI, "_ID = " + args.getString(0), null);
                     if (res == 1) {
@@ -188,7 +183,6 @@ public class CallLogPlugin extends CordovaPlugin {
                     } else {
                         result = new PluginResult(Status.ERROR, res);
                     }
-
                 } catch (JSONException e) {
                     Log.d(TAG, "Got JSON Exception " + e.getMessage());
                     result = new PluginResult(Status.JSON_EXCEPTION, e.getMessage());
@@ -292,8 +286,8 @@ public class CallLogPlugin extends CordovaPlugin {
 
     private String getContactNameFromNumber(String number) {
         // define the columns I want the query to return
-        String[] projection = new String[] {
-            PhoneLookup.DISPLAY_NAME
+        String[] projection = new String[]{
+                PhoneLookup.DISPLAY_NAME
         };
 
         // encode the phone number and build the filter URI
@@ -313,5 +307,4 @@ public class CallLogPlugin extends CordovaPlugin {
         // return the original number if no match was found
         return number;
     }
-
-    }
+}

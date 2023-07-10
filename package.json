@@ -1,23 +1,23 @@
 {
-    "name": "cordova-plugin-call-log2",
-    "version": "0.0.4",
+    "name": "cordova-plugin-call-logs",
+    "version": "0.0.5",
     "description": "Cordova Android Call log Plugin",
     "scripts": {
         "version": "node ./bump-version.js && git add plugin.xml",
         "postversion": "git push && git push --tags"
     },
     "cordova": {
-        "id": "cordova-plugin-call-log2",
+        "id": "cordova-plugin-call-logs",
         "platforms": [
             "android"
         ]
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/sagrawal31/cordova-plugin-calllog"
+        "url": "https://github.com/web-monster/cordova-plugin-call-logs"
     },
     "bugs": {
-        "url": "https://github.com/sagrawal31/cordova-plugin-calllog/issues"
+        "url": "https://github.com/web-monster/cordova-plugin-call-logs/issues"
     },
     "keywords": [
         "cordova",

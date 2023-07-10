@@ -1,8 +1,6 @@
 <?xml version='0.1' encoding='UTF-8'?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-call-log2"
-        version="0.0.4">
+<plugin xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-call-logs" version="0.0.5"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0">
 
     <name>CallLog</name>
 
@@ -13,32 +11,30 @@
     <license>MIT</license>
 
     <engines>
-        <engine name="cordova" version=">=8.0.0"/>
+        <engine name="cordova" version=">=8.0.0" />
     </engines>
 
-    <js-module src="www/call-log.js" name="CallLogCordovaPlugin">
-        <clobbers target="cordova.plugins.callLog"/>
+    <js-module name="CallLogCordovaPlugin" src="www/call-log.js">
+        <clobbers target="cordova.plugins.callLog" />
     </js-module>
 
-    <js-module src="test/tests.js" name="tests">
-    </js-module>
+    <js-module name="tests" src="test/tests.js"></js-module>
 
     <!-- android -->
     <platform name="android">
-
-        <config-file target="res/xml/config.xml" parent="/*">
+        <config-file parent="/*" target="res/xml/config.xml">
             <feature name="CallLog">
-                <param name="android-package" value="com.ubookr.plugins.CallLogPlugin"/>
+                <param name="android-package" value="com.ubookr.plugins.CallLogPlugin" />
             </feature>
         </config-file>
 
-        <config-file target="AndroidManifest.xml" parent="/manifest">
-            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-            <uses-permission android:name="android.permission.READ_CALL_LOG"/>
-            <uses-permission android:name="android.permission.WRITE_CALL_LOG"/>
-            <uses-permission android:name="android.permission.READ_CONTACTS"/>
+        <config-file parent="/manifest" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_CALL_LOG" />
+            <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+            <uses-permission android:name="android.permission.READ_CONTACTS" />
         </config-file>
 
-        <source-file src="src/com/ubookr/plugins/CallLogPlugin.java" target-dir="src/com/ubookr/plugins"/>
+        <source-file src="src/com/ubookr/plugins/CallLogPlugin.java" target-dir="src/com/ubookr/plugins" />
     </platform>
 </plugin>

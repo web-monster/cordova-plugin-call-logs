@@ -1,6 +1,4 @@
-[![npm version](https://badge.fury.io/js/cordova-plugin-call-log2.svg)](https://badge.fury.io/js/cordova-plugin-call-log2)
-
-# cordova-plugin-call-log2
+# cordova-plugin-call-logs
 
 Cordova plugin to access the call history on a device.
 
@@ -12,7 +10,7 @@ Cordova plugin to access the call history on a device.
 ## Installation
 
 ```shell script
-cordova plugins add cordova-plugin-call-log2
+cordova plugins add cordova-plugin-call-logs
 ```
 
 ## Usage
