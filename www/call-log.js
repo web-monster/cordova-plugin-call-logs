@@ -15,12 +15,4 @@ CallLog.prototype.show = function (phoneNumber, successCallback, errorCallback) 
     exec(successCallback, errorCallback, "CallLog", "show", [phoneNumber]);
 };
 
-CallLog.prototype.delete = function (id, successCallback, errorCallback) {
-    exec(successCallback, errorCallback, "CallLog", "delete", [id]);
-};
-
-CallLog.prototype.insert = function (args, successCallback, errorCallback) {
-    exec(successCallback, errorCallback, "CallLog", "insert", args);
-};
-
 module.exports = new CallLog();
